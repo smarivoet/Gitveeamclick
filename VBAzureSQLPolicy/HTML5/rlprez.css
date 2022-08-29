@@ -1,0 +1,116 @@
+/*!
+ * ActivePresenter HTML5 Output File
+ * Copyright (c) Atomi Systems, Inc. All rights reserved.
+ * https://atomisystems.com/activepresenter/
+ * Version: 8.5.4
+ * Date: 2021.11.18
+ */
+#vDkuBlZE .ap-focused {
+	outline: 1px dashed black;
+	outline-offset: 1px;
+}
+#vDkuBlZE p {
+	margin: 0;
+}
+#vDkuBlZE ol,ul {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+#vDkuBlZE {
+	-webkit-tap-highlight-color: transparent;
+}
+
+
+.ap-correct-values-dropbtn:hover {
+  background-color: #ddd;
+}
+.ap-correct-values-dropdown {
+  position: relative;
+  display: inline-block;
+}
+.ap-correct-values-dropdown-content {
+  display: none;
+  position: absolute;
+  color: black;
+  background-color: #f1f1f1;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+.ap-correct-values-dropdown-content li
+{
+  color: black;
+  padding: 4px 4px;
+  cursor: auto;
+}
+.ap-correct-values-dropdown-content li:hover {
+  background-color: #ddd;
+}
+.ap-correct-values-dropdown:hover .ap-correct-values-dropdown-content {
+  min-width: 100px;
+}
+.ap-correct-values-dropdown:hover{
+  background-color: #ddd;
+}
+
+
+/* Animation */
+@-webkit-keyframes 
+pulsate {
+	0% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+		opacity: 0.8;
+	}
+	45% {
+		-webkit-transform: scale(1.75);
+		transform: scale(1.75);
+		opacity: 0;
+	}
+}
+@keyframes 
+pulsate {
+	0% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+		opacity: 0.8;
+	}
+	45% {
+		-webkit-transform: scale(1.75);
+		transform: scale(1.75);
+		opacity: 0;
+	}
+}
+
+.ap-hotspot {
+	position: absolute;
+	transition: all .3s ease;
+	cursor: pointer;
+}
+
+.ap-hotspot .hs-circle {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	border-radius: 50%;
+	transform-origin: 50% 50%;
+}
+
+.ap-hotspot .hs-ring {
+	display: block;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	-webkit-transform-origin: 50% 50%;
+	transform-origin: 50% 50%;
+	border-radius: 50%;
+	margin: -1px auto auto -1px;
+	border: 1px solid;
+	-webkit-animation: pulsate 3s ease-out infinite;
+	animation: pulsate 3s ease-out infinite;
+	opacity: 0;
+}
+
+.ap-hotspot .hs-ring:hover {
+	animation: none;
+}

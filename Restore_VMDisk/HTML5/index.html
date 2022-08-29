@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+	<title>Restore_VMDisk</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta http-equiv="imagetoolbar" content="no" />
+	<meta name="generator" content="ActivePresenter 8.5.2"/>
+	<meta name="author" content="stijn.marivoet" />
+	<meta name="copyright" content=" " />
+	<meta name="description" content=""/>
+
+	<link rel="stylesheet" type="text/css" href="index.css" />
+
+	<script type="text/javascript">
+		var language = {"Tutorial":"Tutorial","Description":"Description","Author":"Author","DemoIntro":"Play presentation automatically","Copyright":"Copyright","TestIntro":"Choose this mode to do a test","Homepage":"Home page","Practice":"Practice","Test":"Test","Demo":"Demonstration","TutorialIntro":"Tutorial mode","PracticeIntro":"Choose this mode to practise more","OpenPrezError":"Could not open presentation.\nError: "};
+		var PlayModes = {
+			DEMO: 1,
+			TUT: 2,
+			PRAC: 4,
+			TEST: 8
+		};
+
+		var opmodes = 15;
+		function openPrez(url, mode) {
+			try {
+				var margin = 40;
+				var top = margin, 
+					left = margin, 
+					width = screen.availWidth - 2 * margin, 
+					height = screen.availHeight - 4 * margin;
+				var styles = 'top=' + top + ',left=' + left + ',width=' + width + ',height=' + height
+					+ ',location=no,toolbar=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes';
+				var owin = window.open(encodeURI(url), '_blank', styles);
+				if (owin)
+					owin.focus();
+			}
+			catch (e) {
+				alert(language.OpenPrezError + e);
+			}
+			return false;
+		};
+	</script>
+</head>
+
+<body>
+	<div id="ap-top-container" class="ap-top-container">
+		<div class="ap-sub-container">
+			<div class="ap-layout-top">
+				<script>
+					var apInfoHTML = '<h1>Restore_VMDisk</h1> \
+									<table> \
+										<tr> \
+											<td>' + language.Description + '</td> \
+											<td class="ap-left-indent" ></td> \
+										</tr> \
+										<tr> \
+											<td>' +language.Author + '</td> \
+											<td class="ap-left-indent">stijn.marivoet</td> \
+										</tr> \
+										<tr> \
+											<td>' + language.Copyright + '</td> \
+											<td class="ap-left-indent"></td> \
+										</tr> \
+										<tr> \
+											<td>' + language.Homepage + '</td> \
+											<td class="ap-left-indent"><a href="" target="_blank"></a></td> \
+										</tr>\
+									</table> \
+									<div class="ap-static-line"> \
+									</div>';
+
+					var container = document.getElementById('ap-top-container');
+					var layoutTop = container.getElementsByClassName('ap-layout-top')[0];
+					var apInfo = document.createElement('div');
+					apInfo.classList.add('ap-info');
+					apInfo.innerHTML = apInfoHTML;
+					layoutTop.appendChild(apInfo);
+				</script>
+			</div>
+		</div>
+		<div class="ap-layout-bottom-container">
+			<div class="ap-layout-bottom">
+				<script>
+					var container = document.getElementById('ap-top-container');
+					var layoutBottom = container.getElementsByClassName('ap-layout-bottom')[0];
+					
+					var modes = [PlayModes.DEMO, PlayModes.TUT, PlayModes.PRAC, PlayModes.TEST];
+					var classes = ['ap-operation-demo-btn', 'ap-operation-tutorial-btn', 'ap-operation-practice-btn', 'ap-operation-test-btn'];
+					var pages = ['demo.html', 'tutorial.html', 'practice.html', 'test.html'];
+					var titles = [language.DemoIntro, language.TutorialIntro, language.PracticeIntro, language.TestIntro];
+					var texts = [language.Demo, language.Tutorial, language.Practice, language.Test];
+					var icons = ['demo.png', 'tutorial.png', 'practice.png', 'test.png'];
+
+					for (var i = 0; i < 4; ++i){
+						if ((modes[i] & opmodes) != modes[i])
+							continue;
+						var btnMode = document.createElement('div');
+						btnMode.classList.add('ap-operation-btn');
+						btnMode.classList.add(classes[i]);
+						btnMode.setAttribute('title', titles[i]);
+						btnMode.setAttribute('onClick', 'openPrez("' + pages[i] +'")', titles[i]);
+						btnMode.innerHTML += '<img src="index-images/' + icons[i] + '"/>' + '<div class="ap-btn-text">' + texts[i] + '</div>';
+						layoutBottom.appendChild(btnMode);
+					}
+				</script>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
