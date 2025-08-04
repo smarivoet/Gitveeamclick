@@ -1,0 +1,291 @@
+﻿<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+	<title>AWS_createPolicy</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="generator" content="ActivePresenter 9.1.5"/>
+	<meta name="author" content="stijn.marivoet" />
+	<meta name="copyright" content=" " />
+	<meta name="description" content=""/>
+	<meta name="viewport" content="initial-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<style>
+		body {
+			background-color: #ffffff;
+			color: #4d4d4d;
+			font-family: "Verdana";
+			margin: 0px;
+			padding: 0px;
+			display: flex;
+			flex-direction: row;
+			min-height: 100vh;
+		}
+		.ap-mode-buttons-container {
+			background-color: #29abe2;
+			min-height: 100%;
+			flex: 2;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.ap-mode-buttons {
+			background-color: #29abe2;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			max-width: 100%;
+		}
+		.ap-mode-button {
+			background-color: transparent;
+			color: #ffffff;
+			border: none;
+			margin: 10px;
+			text-transform: uppercase;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+		}
+		.ap-project-information-container {
+			min-height: 100%;
+			flex: 3;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.ap-project-information {
+			font-size: 14px;
+		}
+
+		.ap-mode-button svg {
+			width: 48px;
+			height: 48px;
+			margin: 10px 20px 10px 20px;
+			display: inline-block;
+			filter: drop-shadow(2px 2px 3px #333333);
+		}
+
+		.ap-mode-button {
+		}
+
+		.ap-mode-button:hover {
+			background-color: rgba(255, 255, 255, 0.2);
+		}
+
+		.ap-mode-button span {
+			margin: 10px 20px 10px 20px;
+			font-size: 18px;
+		}
+
+		h1 {
+			font-size: 28px;
+			font-weight: bold;
+			margin: 25px 0px 25px 0px;
+		}
+
+		.ap-project-information td {
+			padding: 5px 20px 5px 0px;
+		}
+
+		a:link {color:#4d4d4d; text-decoration:none;}
+		a:visited {color:#4d4d4d; text-decoration:none}
+		a:active {color:#4d4d4d; text-decoration:none}
+		a:hover {color:#4d4d4d; text-decoration:none}
+		
+		@media (max-width: 1024px) and (orientation: portrait) {
+			body {
+				flex-direction: column;
+			}
+			.ap-mode-buttons-container {
+				width: 100%;
+				flex: 3;
+			}
+			.ap-project-information-container {
+				width: 100%;
+				flex: 2;
+			}
+		}
+		
+		@media (max-width: 640px) and (max-height: 640px) {
+			.ap-mode-button svg {
+				width: 32px;
+				height: 32px;
+			}
+			.ap-mode-button span {
+				margin: 5px 10px 5px 10px;
+				font-size: 14px;
+			}
+			.ap-project-information {
+				font-size: 12px;
+			}
+		}
+
+	</style>
+
+	<script type="text/javascript">
+		var language = {"Tutorial":"Tutorial","Description":"Description","Author":"Author","Copyright":"Copyright","TestIntro":"Choose this mode to do a test","Homepage":"Home page","Practice":"Practice","Test":"Test","Demo":"Demonstration","DemoIntro":"Play presentation automatically","TutorialIntro":"Tutorial mode","PracticeIntro":"Choose this mode to practise more","OpenPrezError":"Could not open presentation.\nError: "};
+		var PlayModes = {
+			DEMO: 1,
+			TUT: 2,
+			PRAC: 4,
+			TEST: 8
+		};
+
+		var opmodes = 15;
+		function openPrez(url, mode) {
+			var fullUrl = '' + url;
+			try {
+				var margin = 40;
+				var top = margin,
+					left = margin,
+					width = screen.availWidth - 2 * margin,
+					height = screen.availHeight - 4 * margin;
+				var styles = 'top=' + top + ',left=' + left + ',width=' + width + ',height=' + height
+					+ ',location=no,toolbar=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes';
+				var owin = window.open(encodeURI(fullUrl), '_blank', styles);
+				if (owin)
+					owin.focus();
+			}
+			catch (e) {
+				alert(language.OpenPrezError + e);
+			}
+			return false;
+		};
+		function setElementText(id, text) {
+			document.getElementById(id).innerHTML = text;
+		}
+		function setElementTitle(id, text) {
+			document.getElementById(id).setAttribute('title', text);
+		}
+		function hideElement(id) {
+			document.getElementById(id).style.display = 'none';
+		}
+	</script>
+</head>
+
+<body>
+	<div class="ap-mode-buttons-container">
+		<div class="ap-mode-buttons">
+			<button id="ap-mode-demo" class="ap-mode-button" onclick="openPrez('demo.html')">
+				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+					<style type="text/css">
+						.st0{fill:#FFFFFF;}
+						.st1{fill:#29ABE2;}
+					</style>
+					<path class="st0" d="M40,50H10C4.48,50,0,45.52,0,40l0-30C0,4.48,4.48,0,10,0l30,0c5.52,0,10,4.48,10,10v30C50,45.52,45.52,50,40,50z"/>
+					<rect x="8" y="8" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 50 3.552714e-15)" class="st1" width="34" height="34"/>
+					<rect x="14" y="9" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 50 3.552714e-15)" class="st0" width="22" height="32"/>
+					<rect x="35" y="9" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 48 -26)" class="st0" width="4" height="4"/>
+					<rect x="35" y="37" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 76 2)" class="st0" width="4" height="4"/>
+					<rect x="27" y="9" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 40 -18)" class="st0" width="4" height="4"/>
+					<rect x="27" y="37" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 68 10)" class="st0" width="4" height="4"/>
+					<rect x="19" y="9" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 32 -10)" class="st0" width="4" height="4"/>
+					<rect x="19" y="37" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 60 18)" class="st0" width="4" height="4"/>
+					<rect x="11" y="9" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 24 -2)" class="st0" width="4" height="4"/>
+					<rect x="11" y="37" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 52 26)" class="st0" width="4" height="4"/>
+					<polygon class="st1" points="22,21 29,25 22,29 "/>
+				</svg>
+
+				<span id="ap-label-mode-demo">Demonstration</span>
+			</button>
+			<button id="ap-mode-tutorial" class="ap-mode-button" onclick="openPrez('tutorial.html')">
+				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+				<style type="text/css">
+					.st0{fill:#FFFFFF;}
+					.st1{fill:#29ABE2;}
+				</style>
+				<path class="st0" d="M40,50H10C4.48,50,0,45.52,0,40l0-30C0,4.48,4.48,0,10,0l30,0c5.52,0,10,4.48,10,10v30C50,45.52,45.52,50,40,50z"/>
+				<rect x="11.5" y="4.5" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 46.5 -3.5)" class="st1" width="27" height="34"/>
+				<path class="st1" d="M42,39H23.45c-0.23-1.14-1.24-2-2.45-2s-2.22,0.86-2.45,2H8v1h10.55c0.23,1.14,1.24,2,2.45,2s2.22-0.86,2.45-2 H42V39z"/>
+				<rect x="14" y="4" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 45 -5)" class="st0" width="22" height="32"/>
+				<path class="st1" d="M17.5,19L17.5,19c-1.93,0-3.5-1.57-3.5-3.5v0c0-1.93,1.57-3.5,3.5-3.5h0c1.93,0,3.5,1.57,3.5,3.5v0 C21,17.43,19.43,19,17.5,19z"/>
+				<path class="st1" d="M12,29c0-4.97,2.46-9,5.5-9s5.5,4.03,5.5,9H12z"/>
+				</svg>
+
+				<span id="ap-label-mode-tutorial">Tutorial</span>
+			</button>
+			<button id="ap-mode-practice" class="ap-mode-button" onclick="openPrez('practice.html')">
+				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+				<style type="text/css">
+					.st0{fill:#FFFFFF;}
+					.st1{fill:#29ABE2;}
+				</style>
+				<path class="st0" d="M40,50H10C4.48,50,0,45.52,0,40l0-30C0,4.48,4.48,0,10,0l30,0c5.52,0,10,4.48,10,10v30C50,45.52,45.52,50,40,50z"/>
+				<path class="st1" d="M15.08,37H38V9c0-0.55-0.45-1-1-1h-4v7l-3-3l-3,3V8H15c-1.66,0-3,1.34-3,3v28c0,1.66,1.34,3,3,3h22h1v-1v-3h-1 v3H15.08C13.93,41,13,40.1,13,39C13,37.9,13.93,37,15.08,37z"/>
+				</svg>
+
+				<span id="ap-label-mode-practice">Practice</span>
+			</button>
+			<button id="ap-mode-test" class="ap-mode-button" onclick="openPrez('test.html')">
+				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+					<style type="text/css">
+						.st0{fill:#FFFFFF;}
+						.st1{fill:#29ABE2;}
+					</style>
+					<path class="st0" d="M40,50H10C4.48,50,0,45.52,0,40l0-30C0,4.48,4.48,0,10,0l30,0c5.52,0,10,4.48,10,10v30C50,45.52,45.52,50,40,50z"/>
+					<path class="st1" d="M10,26L10,26c0-6.63,5.37-12,12-12h0c6.63,0,12,5.37,12,12v0c0,6.63-5.37,12-12,12h0C15.37,38,10,32.63,10,26z"/>
+					<path class="st1" d="M41.71,13.71l-1.41-1.41l-7.83,7.83c0.35,0.62,0.64,1.27,0.87,1.95L41.71,13.71z"/>
+					<path class="st0" d="M17.71,21.29l-1.41,1.41l8.21,8.21l8.83-8.83c-0.24-0.68-0.53-1.34-0.87-1.95l-7.96,7.96L17.71,21.29z"/>
+				</svg>
+
+				<span id="ap-label-mode-test">Test</span>
+			</button>
+		</div>
+	</div>
+
+	<div class="ap-project-information-container">
+		<div class="ap-project-information">
+			<h1>AWS_createPolicy</h1>
+			<table>
+				<tr>
+					<td id="ap-label-description">Description</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td id="ap-label-author">Author</td>
+					<td>stijn.marivoet</td>
+				</tr>
+				<tr>
+					<td id="ap-label-copyright">Copyright</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td id="ap-label-homepage">Homepage</td>
+					<td><a href="" target="_blank"></a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<script>
+		if (language) {
+			setElementText("ap-label-mode-demo", language.Demo);
+			setElementText("ap-label-mode-tutorial", language.Tutorial);
+			setElementText("ap-label-mode-practice", language.Practice);
+			setElementText("ap-label-mode-test", language.Test);
+
+			setElementTitle("ap-mode-demo", language.DemoIntro);
+			setElementTitle("ap-mode-tutorial", language.TutorialIntro);
+			setElementTitle("ap-mode-practice", language.PracticeIntro);
+			setElementTitle("ap-mode-test", language.TestIntro);
+
+			setElementText("ap-label-description", language.Description);
+			setElementText("ap-label-author", language.Author);
+			setElementText("ap-label-copyright", language.Copyright);
+			setElementText("ap-label-homepage", language.Homepage);
+		}
+
+		if (opmodes){
+			if ((PlayModes.DEMO & opmodes) != PlayModes.DEMO)
+				hideElement("ap-mode-demo");
+			if ((PlayModes.TUT & opmodes) != PlayModes.TUT)
+				hideElement("ap-mode-tutorial");
+			if ((PlayModes.PRAC & opmodes) != PlayModes.PRAC)
+				hideElement("ap-mode-practice");
+			if ((PlayModes.TEST & opmodes) != PlayModes.TEST)
+				hideElement("ap-mode-test");
+		}
+	</script>
+</body>
+</html>

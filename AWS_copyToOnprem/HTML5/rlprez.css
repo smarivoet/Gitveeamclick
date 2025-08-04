@@ -1,0 +1,100 @@
+/*!
+ * Copyright (c) Atomi Systems, Inc. All rights reserved.
+ * Version: 9.1.5
+ * Date: 2024.06.12
+ */
+#lqMz5QfJ .ap-focused {
+	outline: 1px dashed black;
+	outline-offset: 1px;
+}
+#lqMz5QfJ p {
+	margin: 0;
+}
+#lqMz5QfJ ol,ul {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+#lqMz5QfJ {
+	-webkit-tap-highlight-color: transparent;
+}
+
+
+.ap-correct-values-dropbtn:hover {
+  background-color: #ddd;
+}
+.ap-correct-values-dropdown {
+  position: relative;
+  display: inline-block;
+}
+.ap-correct-values-dropdown-content {
+  display: none;
+  position: absolute;
+  color: black;
+  background-color: #f1f1f1;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+.ap-correct-values-dropdown-content li
+{
+  color: black;
+  padding: 4px 4px;
+  cursor: auto;
+}
+.ap-correct-values-dropdown-content li:hover {
+  background-color: #ddd;
+}
+.ap-correct-values-dropdown:hover .ap-correct-values-dropdown-content {
+  min-width: 100px;
+}
+.ap-correct-values-dropdown:hover{
+  background-color: #ddd;
+}
+
+
+/* Hotspot animation */
+@keyframes pulsate {
+	0% {
+		transform: scale(1);
+		opacity: 0.8;
+	}
+	45% {
+		transform: scale(1.75);
+		opacity: 0;
+	}
+}
+
+.ap-hotspot {
+	position: absolute;
+	transition: all .3s ease;
+	cursor: pointer;
+	border-radius: 50%;
+	z-index: 1;
+}
+
+.ap-hotspot .hs-ring {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	border: 1px solid;
+	margin: -1px auto auto -1px;
+	opacity: 0;
+	pointer-events: none;
+	animation: pulsate 3s ease-out infinite;
+}
+
+.ap-hotspot:hover .hs-ring {
+	animation: none;
+}
+
+
+.ap-select::-ms-expand {
+	display: none;
+}
+
+table, th, td {
+	border-collapse: collapse;
+}
